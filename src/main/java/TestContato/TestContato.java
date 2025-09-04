@@ -28,6 +28,7 @@ public class TestContato {
             }
 
             try {
+                assert inputOpcao != null;
                 opcao = Integer.parseInt(inputOpcao);
 
                 if (opcao < 1 || opcao > 4) {
