@@ -10,7 +10,7 @@ public class TestContato {
     public static void main(String[] args) {
         List<Contato> contatos = new ArrayList<>();
         boolean continuar = true;
-        int opcao = 0;
+        int opcao;
 
         while (continuar) {
             String menu = """
