@@ -54,7 +54,9 @@ public class TestContato {
                         if (contatos.isEmpty()) {
                             JOptionPane.showMessageDialog(null, "Nenhum contato encontrado!");
                         }
-                        //forEach foi criado apenas para listar todo a agenda de contatos//
+
+                        //forEach foi criado apenas para listar toda a agenda de contatos//
+
                         else {
                             StringBuilder lista = new StringBuilder("📒 Contatos:\n");
                             for (Contato c : contatos) {
@@ -106,15 +108,12 @@ public class TestContato {
                         break;
                     }
                     case 5: {
-                        if (opcao == 5) {
-                            JOptionPane.showMessageDialog(null, "Encerrando Programa...");
-                            continuar = false;
-                        }
+                        JOptionPane.showMessageDialog(null, "Encerrando Programa...");
                     }
 
                 }
 
-                if (opcao < 1 || opcao > 5){
+                if (opcao < 1 || opcao > 5) {
                     JOptionPane.showMessageDialog(null, "Opção invalida tente novamente", "ERROR", JOptionPane.ERROR_MESSAGE);
                     continuar = true;
                 }
@@ -122,10 +121,8 @@ public class TestContato {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Entrada inválida. Digite apenas números.",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
-                opcao = -1;
             }
         }
-
     }
 }
 
