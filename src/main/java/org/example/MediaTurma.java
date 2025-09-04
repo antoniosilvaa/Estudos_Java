@@ -1,18 +1,11 @@
 package org.example;
 
+import Aluno.Aluno;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class Aluno {
-    String nome;
-    int nota;
-
-    public Aluno(String nome, int nota) {
-        this.nome = nome;
-        this.nota = nota;
-    }
-}
 
 public class MediaTurma {
     public static void main(String[] args) {
@@ -22,50 +15,56 @@ public class MediaTurma {
         System.out.println("Quantos alunos tem na turma? ");
         int qtdAlunos = input.nextInt();
 
+        System.out.println("Quantas notas os alunos teram?");
+        int qtdNotas = input.nextInt();
+        int somaNotasAluno = 0;
+
+
         for (int i = 0; i < qtdAlunos; i++) {
             System.out.println("Digite o nome do aluno: ");
             String nomeAluno = input.next();
 
-
-            System.out.println("Digite a nota do aluno" + (i+1) + ":");
-            int nota = input.nextInt();
-
-            alunos.add(new Aluno(nomeAluno, nota));
+            for (int j = 0; j < qtdNotas; j++) {
+                System.out.println("Digite a nota " + (j + 1) + ":");
+                int nota = input.nextInt();
+                somaNotasAluno += nota;
+                alunos.add(new Aluno(nomeAluno, nota));
+            }
         }
 
-        int maiorNota = alunos.get(0).nota;
-        int menorNota = alunos.get(0).nota;
+        int maiorNota = alunos.get(0).getNota();
+        int menorNota = alunos.get(0).getNota();
         int soma = 0;
         List<String> aprovados = new ArrayList<>();
         List<String> reprovados = new ArrayList<>();
-        for(Aluno aluno : alunos ) {
+        for (Aluno aluno : alunos) {
 
-            soma += aluno.nota;
+            soma += aluno.getNota();
 
-            if(aluno.nota < menorNota){
-                menorNota = aluno.nota;
+            if (aluno.getNota() < menorNota) {
+                menorNota = aluno.getNota();
             }
-            if(aluno.nota > maiorNota){
-                maiorNota = aluno.nota;
+            if (aluno.getNota() > maiorNota) {
+                maiorNota = aluno.getNota();
             }
-            if (aluno.nota >= 7){
-                aprovados.add(aluno.nome);
-            }else {
-                reprovados.add(aluno.nome);
+            if (aluno.getNota() >= 7) {
+                aprovados.add(aluno.getNome());
+            } else {
+                reprovados.add(aluno.getNome());
             }
         }
-    double media = (double) soma/qtdAlunos;
+        double media = (double) soma / qtdAlunos;
 
-        alunos.sort((a,b) -> b.nota - a.nota);
+        alunos.sort((a, b) -> b.getNota() - a.getNota());
 
         System.out.println("\nTop 3 Alunos: ");
         for (int i = 0; i < 3 && i < alunos.size(); i++) {
-            System.out.println((i + 1) + ". " + alunos.get(i).nome + " - Nota: " + alunos.get(i).nota);
+            System.out.println((i + 1) + ". " + alunos.get(i).getNome() + " - Nota: " + alunos.get(i).getNota());
 
         }
         System.out.println("\nMaior nota: " + maiorNota);
         System.out.println("Menor nota: " + menorNota);
-        System.out.println("Média da turma: " + media);
+        System.out.println("Média da Turma: " + media);
         System.out.println("Aprovados da turma: " + aprovados);
         System.out.println("Reprovados da turma: " + reprovados);
     }
